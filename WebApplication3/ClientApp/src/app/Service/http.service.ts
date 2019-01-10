@@ -20,5 +20,11 @@ export class HttpService {
   addHouse(house: House):Observable<House>{
     return this.http.post('https://localhost:5001/api/Houses/addhouse', house)
   }
+  addTemperatureSensor(sensor: Sensor):Observable<Sensor>{
+    return this.http.post('https://localhost:5001/api/Sensors/AddTemperatureSensor', sensor)
+  }
+  addMotionSensor(sensor: Sensor):Observable<Sensor>{
+    return this.http.post('https://localhost:5001/api/Sensors/AddMotionSensor', sensor)
+  }
   
 }

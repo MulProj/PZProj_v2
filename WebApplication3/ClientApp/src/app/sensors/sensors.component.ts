@@ -10,6 +10,9 @@ import { Sensor } from '../app.component';
 })
 export class SensorsComponent implements OnInit {
   allSensors$: Observable<Array<Sensor>>
+  houseID: number;
+  temp:number;
+  move:boolean;
 
   constructor(private httpService: HttpService) { }
 
@@ -18,6 +21,42 @@ export class SensorsComponent implements OnInit {
 
     }
 
+    s_houseID(event)
+    {
+      this.houseID=event.target.value
+    }
+    s_temp(event)
+    {
+      this.temp=event.target.value
+    }
+    s_move(event)
+    {
+      this.temp=event.target.value
+    }
+    addTemperatureSensor()
+    {
+      const s: Sensor=({
+        isMove:this.move,
+        isOn: true,
+        houseId: this.houseID
+ });
+    this.httpService.addTemperatureSensor(s).subscribe(sensor=>{
+       console.log(sensor);
+      })
+    }
+
+    addMotionSensor()
+    {
+      const s: Sensor=({
+        isMove:false,
+        isOn: false,
+        houseId: this.houseID
+ });
+    this.httpService.addTemperatureSensor(s).subscribe(sensor=>{
+       console.log(sensor);
+      })
+    }
+  
 }
 
 

@@ -26,11 +26,14 @@ export interface Sensor{
   temperature?: number;
   humidity?: number;
   smoke?: number;
-  isMove?: number;
+  isMove?: boolean;
   sensorId?: number;
   isOn?: boolean;
   houseId?: number;
   coordinateX?: number;
   coordinateY?: number;
   house?: House[];
+  x?: number;
+  y?: number;
+
 }

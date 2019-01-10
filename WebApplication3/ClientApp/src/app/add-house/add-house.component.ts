@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { House } from '../app.component';
 import { HttpService } from '../Service/http.service';
-import { ViewChild, ElementRef } from '@angular/core';
-import { SensorsComponent } from '../sensors/sensors.component';
-import { HttpRequest, HttpClient, HttpEventType } from '@angular/common/http';
-import { FormControl } from '@angular/forms';
-import { ReadVarExpr, ReadKeyExpr } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
 
 
@@ -113,10 +108,7 @@ export class AddHouseComponent implements OnInit {
     console.log('Error: ', error);
     };
  }
- showImage(image)
- {
-   return this.domSanitizer.bypassSecurityTrustHtml(image);
- }
+
 }
 
 
