@@ -1,0 +1,28 @@
+<form role="form">
+  <br style="clear:both">
+      <h3 style="margin-bottom: 25px; text-align: center;">Dodaj mieszkanie</h3>
+    <div class="form-group">
+      <input type="text" class="form-control" #postCode name="name" placeholder="Kod pocztowy" (input)="s_postCode($event)" required>
+      <input type="text" class="form-control" #town name="name" placeholder="Miejscowość" (input)="s_town($event)" required>
+      <input type="text" class="form-control" #street name="name" placeholder="Ulica" (input)="s_street($event)" required>
+      <input type="text" class="form-control" #houseNumber name="name" placeholder="Nr budynku" (input)="s_houseNumber($event)" required>
+      <input type="text" class="form-control" #description name="name" placeholder="Opis" (input)="s_description($event)" required>
+    </div> 
+
+
+  <h1>File Upload Using Angular 5 and ASP.NET Core 2.1</h1>
+  <input #file type="file" multiple (change)="getBase64($event)" />
+  <br/>
+  <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
+    {{progress}}%
+  </span>
+  
+  <span style="font-weight:bold;color:green;" *ngIf="message">
+    {{message}}
+  </span>
+
+  <button type="button" class="btn btn-primary" (click)="addHouse()">Primary</button> 
+</form>
+
+
+<app-canvas></app-canvas>
