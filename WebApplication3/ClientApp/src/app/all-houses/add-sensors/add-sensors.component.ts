@@ -28,8 +28,8 @@ export class AddSensorsComponent implements OnInit {
         temperature: 21,
         isOn: false,
         houseId: this.houseId,
-        coordinateX: 10,
-        coordinateY: 15,
+        coordinateX: 20,
+        coordinateY: 0,
       })
       this.httpService.addTemperatureSensor(s).subscribe(sensor=>{
         console.log(sensor);
@@ -46,8 +46,8 @@ export class AddSensorsComponent implements OnInit {
         isMove: true,
         isOn: false,
         houseId: this.houseId,
-        coordinateX: 10,
-        coordinateY: 15,
+        coordinateX: 120,
+        coordinateY: 0,
       })
       this.httpService.addMotionSensor(s).subscribe(sensor=>{
         console.log(sensor);
@@ -64,8 +64,8 @@ export class AddSensorsComponent implements OnInit {
         smoke: 13.5,
         isOn: false,
         houseId: this.houseId,
-        coordinateX: 10,
-        coordinateY: 15,
+        coordinateX: 220,
+        coordinateY: 0,
       })
       this.httpService.addSmokeSensor(s).subscribe(sensor=>{
         console.log(sensor);
@@ -81,8 +81,8 @@ export class AddSensorsComponent implements OnInit {
         humidity: 19.9,
         isOn: false,
         houseId: this.houseId,
-        coordinateX: 10,
-        coordinateY: 15,
+        coordinateX: 320,
+        coordinateY: 0,
       })
       this.httpService.addHumiditySensor(s).subscribe(sensor=>{
         console.log(sensor);

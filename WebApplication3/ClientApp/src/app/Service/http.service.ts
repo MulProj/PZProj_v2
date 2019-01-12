@@ -16,7 +16,7 @@ export class HttpService {
     return this.http.get<Array<Sensor>>('https://localhost:5001/api/sensors/getsensors')
   }
   getSensorsByHouseId(houseId: number):Observable<Array<Sensor>>{
-    return this.http.get<Array<Sensor>>('https://localhost:5001/api/sensors/getsensors?houseid='+houseId)
+    return this.http.get<Array<Sensor>>('https://localhost:5001/api/sensors/getsensorsbyhouseid?houseid='+houseId)
   }
   updateTemperatureSensor(sensor: Sensor):Observable<Sensor>{
     return this.http.post('https://localhost:5001/api/Sensors/UpdateTemperatureSensor', sensor)

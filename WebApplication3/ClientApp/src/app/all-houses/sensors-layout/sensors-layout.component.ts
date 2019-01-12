@@ -27,18 +27,25 @@ dragHoldX;
 dragHoldY;
 index:number;
 
-@ViewChild('temperature') temperatureSensor: ElementRef; 
-@ViewChild('humidity') humiditySensor: ElementRef; 
-@ViewChild('smoke') smokeSensor: ElementRef; 
-@ViewChild('move') moveSensor: ElementRef; 
 @ViewChild('canvas') canvas: ElementRef;
+temperatureSensor = new Image
+humiditySensor = new Image
+smokeSensor = new Image
+motionSensor = new Image
+
 public ctx: CanvasRenderingContext2D;
 
 ngAfterViewInit(): void {
   this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext('2d');
 }
 ngOnInit(): void {
-  this.sensors$ = this.httpService.getSensorsByHouseId(this.houseId);
+this.sensors$ = this.httpService.getSensorsByHouseId(this.houseId);
+this.temperatureSensor.src="../../../assets/sensor/temperature.png";
+this.humiditySensor.src="../../../assets/sensor/humidity.png";
+this.smokeSensor.src="../../../assets/sensor/smoke.png";
+this.motionSensor.src="../../../assets/sensor/move.png";
+
+
 
  this.sensors$.subscribe(sen => {
   for(var i =0; i<sen.length; i++)
@@ -58,27 +65,25 @@ ngOnInit(): void {
     });
     this.sensors.push(s);
   } 
-this.drawSensors()
+    this.drawSensors();
 })
 
 }
-
-
-
 
 drawSensors()
 { 
   this.ctx.clearRect(0, 0, 800, 600);
   for(var i =0; i<this.sensors.length;i++)
   {
+
     if(this.sensors[i].temperature!= undefined)
-      this.ctx.drawImage(this.temperatureSensor.nativeElement, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
+      this.ctx.drawImage(this.temperatureSensor, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
     else if(this.sensors[i].isMove!= undefined)
-      this.ctx.drawImage(this.moveSensor.nativeElement, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
+      this.ctx.drawImage(this.motionSensor, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
     else if(this.sensors[i].smoke!= undefined)
-      this.ctx.drawImage(this.smokeSensor.nativeElement, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
+      this.ctx.drawImage(this.smokeSensor, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
     else if(this.sensors[i].humidity!= undefined)
-      this.ctx.drawImage(this.humiditySensor.nativeElement, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
+      this.ctx.drawImage(this.humiditySensor, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
   }
   console.log("narysowane");
 }
@@ -100,7 +105,7 @@ inSensors()
 }
 mouse(event)
 {
-console.log(event);
+//console.log(event);
  this.mouseX=event.clientX - this.canvas.nativeElement.getBoundingClientRect().x;
  this.mouseY=event.clientY - this.canvas.nativeElement.getBoundingClientRect().y;
  this.inSensors();
@@ -120,42 +125,50 @@ console.log(event);
         }
      }
 
+   } 
+   else{
+     console.log("Nie trafiłęś ;p")
    }
  }
 }
+
 
 saveSensors(){
   for(var i =0; i<this.sensors.length; i++)
   {
     if(this.sensors[i].temperature!=undefined)
    {
-    this.httpService.updateTemperatureSensor(this.sensors[i]).subscribe(sensor=>{
-      console.log(sensor);
-     }) 
+    this.httpService.updateTemperatureSensor(this.sensors[i]).subscribe(
+      (value)=>{console.log("poprawnie")},
+      (error)=>{console.log('error')},
+      ()=>console.log("koniec")
+     ); 
    }
     else if(this.sensors[i].humidity!=undefined)
     {
-      this.httpService.updateHumiditySensor(this.sensors[i]).subscribe(sensor=>{
-        console.log(sensor);
-       }) 
+      this.httpService.updateHumiditySensor(this.sensors[i]).subscribe(
+        (value)=>{console.log("poprawnie")},
+        (error)=>{console.log('error')},
+        ()=>console.log("koniec")
+       ); 
     }
     else if(this.sensors[i].isMove!=undefined)
     {
-      this.httpService.updateMotionSensor(this.sensors[i]).subscribe(sensor=>{
-        console.log(sensor);
-       }) 
+      this.httpService.updateMotionSensor(this.sensors[i]).subscribe(
+        (value)=>{console.log("poprawnie")},
+        (error)=>{console.log('error')},
+        ()=>console.log("koniec")
+       ); 
     }
     else if(this.sensors[i].smoke!=undefined)
     {
-      this.httpService.updateSmokeSensor(this.sensors[i]).subscribe(sensor=>{
-        console.log(sensor);
-       }) 
+      this.httpService.updateSmokeSensor(this.sensors[i]).subscribe(
+        (value)=>{console.log("poprawnie")},
+        (error)=>{console.log('error')},
+        ()=>console.log("koniec")
+       ); 
     }
   }
-  console.log("temp: ")
-  console.log(this.temperatureSensors);
-  console.log("hum");
-  console.log(this.humiditySensors);
 }
 
 }
