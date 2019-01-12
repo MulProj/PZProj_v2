@@ -10,7 +10,7 @@ export class CanvasComponent implements OnInit {
   sensors = [];
   l_temp: number;
   l_hum:number;
-  l_smoke: number;
+  l_smoke: number; 
   l_move:number;
   counter: 0;
   mouseX;

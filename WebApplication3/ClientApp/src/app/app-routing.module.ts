@@ -11,6 +11,7 @@ import { SensorsComponent } from './sensors/sensors.component';
 import { ChatComponent } from './chat/chat.component';
 import { PlaceComponent } from './place/place.component';
 import { SupportComponent } from './support/support.component';
+import { AddSensorsComponent } from './all-houses/add-sensors/add-sensors.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'all-houses', component: AllHousesComponent },
+  { path: 'all-houses/add-sensors', component: AddSensorsComponent },
   { path: 'add-house', component: AddHouseComponent },
   { path: 'sensors', component: SensorsComponent },
   { path: 'chat', component: ChatComponent },

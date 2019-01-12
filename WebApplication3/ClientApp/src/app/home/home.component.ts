@@ -6,10 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  timeLeft: number = 60;
+  interval;
+  a=5;
+  b;
+  f(){
+    this.a++;
+  }
 
   constructor() { }
 
   ngOnInit() {
-  }
+      this.interval = setInterval(() => {
+        if(this.timeLeft > 0) {
+          this.f()
+        } else {
+          this.timeLeft = 60;
+        }
+      },1000)
+
+
+  
+
+}
 
 }

@@ -13,7 +13,7 @@ export class AppComponent {
 export interface House{
   houseId?: number;
   street?: string;
-  houseNumber?: string;
+  houseNumber?: number;
   postCode?: string;
   town?: string;
   description?: string;
@@ -33,7 +33,7 @@ export interface Sensor{
   coordinateX?: number;
   coordinateY?: number;
   house?: House[];
-  x?: number;
-  y?: number;
+  drag? :boolean
+
 
 }

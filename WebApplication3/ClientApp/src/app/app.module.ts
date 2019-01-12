@@ -24,6 +24,9 @@ import {FormsModule} from '@angular/forms';
 import { CanvasComponent } from './canvas/canvas.component';
 import { UploadComponent } from './upload/upload.component';
 import { SafePipe } from './safe.pipe';
+import { AddSensorsComponent } from './all-houses/add-sensors/add-sensors.component';
+import { SensorsLayoutComponent } from './all-houses/sensors-layout/sensors-layout.component';
+import { ViewSensorsComponent } from './all-houses/view-sensors/view-sensors.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { SafePipe } from './safe.pipe';
     PlaceComponent,
     CanvasComponent,
     UploadComponent,
-    SafePipe
+    SafePipe,
+    AddSensorsComponent,
+    SensorsLayoutComponent,
+    ViewSensorsComponent
   ],
   imports: [
     BrowserModule,

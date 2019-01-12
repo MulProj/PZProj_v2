@@ -6,6 +6,8 @@ namespace WebApplication3.Models.Interfaces
     {
         List<Sensor> GetAllSensors();
         Sensor GetSensor(int sensorId);
+        List<Sensor> GetSensorsByHouseId(int houseId);
+
         int AddTemperatureSensor(TemperatureSensor sensor, House house);
         int AddHumiditySensor(HumiditySensor sensor, House house);
         int AddSmokeSensor(SmokeSensor sensor, House house);

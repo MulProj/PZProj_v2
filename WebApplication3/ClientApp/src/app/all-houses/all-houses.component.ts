@@ -1,4 +1,4 @@
-import { Component, OnInit, Sanitizer } from '@angular/core';
+import { Component, OnInit, Sanitizer, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
 import { HttpService } from '../Service/http.service';
 import { Observable } from 'rxjs';
 import { House } from '../app.component';
@@ -10,14 +10,35 @@ import {DomSanitizer} from '@angular/platform-browser'
 })
 export class AllHousesComponent implements OnInit{
 
-
+selectedHouse: number;
+lastOperationHouse: number = null;
+lastOperationNumber:number=null;
+operacja: number;
 
 var: String;
   constructor(private httpService: HttpService, private domSanitizer: DomSanitizer) { }
   allHouses$: Observable<Array<House>>
+  allHouses2$: Observable<Array<House>>
+  timeLeft: number = 60;
+  interval;
   
     ngOnInit(): void {
-      this.allHouses$ = this.httpService.getHouses()
+/*      this.interval = setInterval(() => {
+        if(this.timeLeft > 0) {
+          this.allHouses$ = this.httpService.getHouses();        
+        } else {
+          this.timeLeft = 3600;
+        }
+
+        if(this.timeLeft > 0) {
+          this.allHouses2$ = this.httpService.getHouses();        
+        } else {
+          this.timeLeft = 60;
+        }
+      },1000)
+*/
+
+     this.allHouses$ = this.httpService.getHouses()
     }
 
     addHouse(){
@@ -31,16 +52,99 @@ var: String;
 
 
     }
-    toF(a)
-    {
-      console.log(a);
-      
-    }
 
     showImage(image)
     {
       console
       return this.domSanitizer.bypassSecurityTrustUrl(image);
+    }
+    addSensorOption(houseId)
+    {
+      this.selectedHouse=houseId
+      if( this.lastOperationHouse==this.selectedHouse)
+      {
+        if(this.lastOperationNumber==1)
+        {
+          this.operacja=0;
+          this.lastOperationNumber=0;
+          this.lastOperationHouse=null;
+        }
+        else
+        {
+          this.operacja=1;
+          this.lastOperationNumber=1;
+        }
+
+      }
+      else
+      {
+        this.operacja=1;
+        this.lastOperationNumber=1;
+        this.lastOperationHouse=this.selectedHouse;
+      }
+ 
+    }
+    statusSensorOption(houseId)
+    {
+      this.selectedHouse=houseId
+      if( this.lastOperationHouse==this.selectedHouse)
+      {
+        if(this.lastOperationNumber==2)
+        {
+          this.operacja=0;
+          this.lastOperationHouse=null;
+        }
+        else
+        {
+          this.operacja=2;
+          this.lastOperationNumber=2;
+        }
+
+      }
+      else
+      {
+        this.operacja=2;
+        this.lastOperationNumber=2;
+        this.lastOperationHouse=this.selectedHouse;
+      }
+    }
+    layoutSensorOption(houseId)
+    {
+      this.selectedHouse=houseId
+      if( this.lastOperationHouse==this.selectedHouse)
+      {
+        if(this.lastOperationNumber==3)
+        {
+          this.operacja=0;
+          this.lastOperationHouse=null;
+        }
+        else
+        {
+          this.operacja=3;
+          this.lastOperationNumber=3;
+        }
+
+      }
+      else
+      {
+        this.operacja=3;
+        this.lastOperationNumber=3;
+        this.lastOperationHouse=this.selectedHouse;
+      }
+    }
+    delHouse(houseId)
+    {
+      this.httpService.delHouse(houseId).subscribe(sensor=>{
+        console.log(sensor);
+      })
+    }
+
+    max(a: number, b:number)
+    {
+      if(a>b)
+        return a;
+      else
+        return b;
     }
    
   }

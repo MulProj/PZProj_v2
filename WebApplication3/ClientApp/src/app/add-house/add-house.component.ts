@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { House } from '../app.component';
+import { House} from '../app.component';
 import { HttpService } from '../Service/http.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -12,29 +12,25 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class AddHouseComponent implements OnInit {
 
   street: string;
-  houseNumber: string;
+  houseNumber: number;
   postCode: string;
   town: string;
   description: string;
   formData;
   selectedFile:File =null;
-  
-
-
-
-
-  ngOnInit(): void {
-
-  }
-
   opis: string;
   progress: number;
   message: string;
   filestring: string;
   filestring2;
-  constructor(private httpService: HttpService, private domSanitizer: DomSanitizer) { 
-    
-  }
+  xd: number;
+  
+
+  constructor
+    (private httpService: HttpService, 
+    private domSanitizer: DomSanitizer
+
+    ) {}
   addHouse()
   {
     const h: House=({
@@ -43,49 +39,36 @@ export class AddHouseComponent implements OnInit {
       postCode: this.postCode,
       town: this.town,
       description: this.description,
-      image: this.filestring
-      
-
-      
+      image: this.filestring 
     });
-    console.log(this.filestring2)
   this.httpService.addHouse(h).subscribe(house=>{
      console.log(house);
-    })
-// console.log("dupa:");
- //   console.log(this.filestring);
-
-    
-    
+    })   
   }
-
-
+  ngOnInit(): void {
+     
+  }
   s_street(event)
   {
     this.street=event.target.value
-    console.log(this.street);
-    
   }
   s_houseNumber(event)
   {
     this.houseNumber=event.target.value
-    console.log(this.houseNumber);
   }
   s_postCode(event)
   {
     this.postCode=event.target.value
-    console.log(this.postCode);
   }
   s_town(event)
   {
     this.town=event.target.value
-    console.log(this.town);  
   }
   s_description(event)
   {
     this.description=event.target.value
-    console.log(this.description); 
   }
+
 
  
   getBase64(event) {
@@ -94,20 +77,23 @@ export class AddHouseComponent implements OnInit {
     let file = event.target.files[0];
     console.log(file);
     let reader = new FileReader();
-   // reader.(file);readAsDataURL
     reader.readAsDataURL(file);
     reader.onloadend = ()=> {
-   //   console.log("rad");
       this.filestring=reader.result.toString();
       this.filestring2=this.domSanitizer.bypassSecurityTrustHtml(this.filestring);
- //     console.log("eee");
- //     console.log(this.filestring2)
     };
 
     reader.onerror = function (error) {
     console.log('Error: ', error);
     };
  }
+
+
+
+
+
+
+
 
 }
 

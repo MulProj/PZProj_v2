@@ -128,6 +128,16 @@ namespace WebApplication3.Models.Repositiories
             return _databaseContext.Sensors.FirstOrDefault(sensor => sensor.SensorId == sensorId);
         }
 
+        public List<Sensor> GetSensorsByHouseId(int houseId)
+        {
+            if (houseId <= 0)
+            {
+                throw new Exception("Id cannot be less than 0");
+            }
+
+            return _databaseContext.Sensors.Where(id => id.HouseId == houseId).ToList();
+        }
+
         public int UpdateHumiditySensor(HumiditySensor sensor)
         {
             if (sensor == null)

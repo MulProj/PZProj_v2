@@ -1,0 +1,26 @@
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Czujnik wilgotności</th>
+        <th>Czujnik temperatury</th>
+        <th>Czujnik dymu</th>
+        <th>Czujnik ruchu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="../../../assets/sensor/humidity.png" #humidity></td>
+        <td><img src="../../../assets/sensor/temperature.png" #temperature></td>
+        <td><img src="../../../assets/sensor/smoke.png" #smoke></td>
+        <td><img src="../../../assets/sensor/move.png" #move></td>
+      </tr>
+    </tbody>
+  </table> 
+<canvas #canvas (click)="mouse($event)" width="800" height="760" 
+[ngStyle]="{'background-image': 'url(' + plan + ')',
+'border':'1px solid black',
+'background-repeat': 'no-repeat',
+'background-size': '800px 600px',
+'background-position': 'bottom'}">
+</canvas>  
+<button type="button" class="btn btn-danger" (click)="saveSensors()">Zapisz</button> 

@@ -136,6 +136,17 @@ namespace WebApplication3.Controllers
             return new JsonResult(_sensorRepository.GetSensor(sensorId));
         }
 
+        [HttpGet("[action]")]
+        public IActionResult GetSensorsByHouseId(int houseId)
+        {
+            if (houseId <= 0)
+            {
+                return BadRequest();
+            }
+
+            return new JsonResult(_sensorRepository.GetSensorsByHouseId(houseId));
+        }
+
         [HttpPost("[action]")]
         public IActionResult UpdateHumiditySensor([FromBody] HumiditySensor sensor)
         {
