@@ -14,10 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AllHousesComponent } from './all-houses/all-houses.component';
 import { AddHouseComponent } from './add-house/add-house.component';
 import { SensorsComponent } from './sensors/sensors.component';
-import { ChatComponent } from './chat/chat.component';
 import { FindUsComponent } from './find-us/find-us.component';
-import { SupportComponent } from './support/support.component';
-import { PlaceComponent } from './place/place.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './Service/http.service';
 import {FormsModule} from '@angular/forms';
@@ -42,10 +39,7 @@ import { ViewSensorsComponent } from './all-houses/view-sensors/view-sensors.com
     AllHousesComponent,
     AddHouseComponent,
     SensorsComponent,
-    ChatComponent,
     FindUsComponent,
-    SupportComponent,
-    PlaceComponent,
     CanvasComponent,
     UploadComponent,
     SafePipe,

@@ -23,6 +23,7 @@ temperatureSensors: Sensor[]= new Array<Sensor>();
 counter: 0;
 mouseX;
 mouseY;
+drag: boolean = false;
 dragHoldX;
 dragHoldY;
 index:number;
@@ -44,8 +45,6 @@ this.temperatureSensor.src="../../../assets/sensor/temperature.png";
 this.humiditySensor.src="../../../assets/sensor/humidity.png";
 this.smokeSensor.src="../../../assets/sensor/smoke.png";
 this.motionSensor.src="../../../assets/sensor/move.png";
-
-
 
  this.sensors$.subscribe(sen => {
   for(var i =0; i<sen.length; i++)
@@ -84,6 +83,7 @@ drawSensors()
       this.ctx.drawImage(this.smokeSensor, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
     else if(this.sensors[i].humidity!= undefined)
       this.ctx.drawImage(this.humiditySensor, this.sensors[i].coordinateX, this.sensors[i].coordinateY, 35, 35);
+
   }
   console.log("narysowane");
 }
@@ -95,7 +95,6 @@ inSensors()
     {
       if(this.sensors[i].coordinateY<=this.mouseY && this.sensors[i].coordinateY+35>=this.mouseY)
       {
-       
         this.index=i;
         this.sensors[i].drag=true; 
       }
@@ -103,6 +102,58 @@ inSensors()
     }
   }
 }
+inSensor(x: number, y: number):boolean{
+  for(var i =0; i<this.sensors.length; i++)
+  {
+    console.log("petla" +i)
+    if(this.sensors[i].coordinateX<=x && this.sensors[i].coordinateX+35>=x && this.sensors[i].coordinateY<=y && this.sensors[i].coordinateY+35>=y)
+    {
+     this.index=i;
+     console.log("index "+ this.index );
+    }
+
+}
+if(this.index!=null)
+{
+  console.log("bingo");
+  return true;
+}
+else
+{
+  console.log("dupa");
+  return false;
+
+}
+}
+mouse(event)
+{
+  this.mouseX=event.clientX - this.canvas.nativeElement.getBoundingClientRect().x;
+  this.mouseY=event.clientY - this.canvas.nativeElement.getBoundingClientRect().y;
+  console.log("klik "+this.mouseX + " "+ this.mouseY);
+  if(this.drag==true)
+  {
+    console.log("sensor");
+      this.sensors[this.index].coordinateX=this.mouseX;
+      console.log("1");
+      this.sensors[this.index].coordinateY=this.mouseY;
+      console.log("2");
+      this.drag=false;
+      this.index=null;
+      this.ctx.clearRect(0, 0, 800, 600);
+      this.drawSensors(); 
+      
+  }
+  else
+  {
+    if(this.inSensor(this.mouseX, this.mouseY))
+    {
+      console.log("zaznaczony sensor");
+        this.drag=true;
+    }
+
+  }
+}
+/*
 mouse(event)
 {
 //console.log(event);
@@ -126,11 +177,8 @@ mouse(event)
      }
 
    } 
-   else{
-     console.log("Nie trafiłęś ;p")
-   }
  }
-}
+}*/
 
 
 saveSensors(){

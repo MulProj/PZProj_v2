@@ -8,9 +8,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AllHousesComponent } from './all-houses/all-houses.component';
 import { AddHouseComponent } from './add-house/add-house.component';
 import { SensorsComponent } from './sensors/sensors.component';
-import { ChatComponent } from './chat/chat.component';
-import { PlaceComponent } from './place/place.component';
-import { SupportComponent } from './support/support.component';
 import { AddSensorsComponent } from './all-houses/add-sensors/add-sensors.component';
 
 
@@ -22,9 +19,6 @@ const routes: Routes = [
   { path: 'all-houses/add-sensors', component: AddSensorsComponent },
   { path: 'add-house', component: AddHouseComponent },
   { path: 'sensors', component: SensorsComponent },
-  { path: 'chat', component: ChatComponent },
-  { path: 'place', component: PlaceComponent },
-  { path: 'support', component: SupportComponent },
   { path: 'default', component: DefaultPageComponent },
   { path: '**', component: PageNotFoundComponent }
   
