@@ -24,15 +24,6 @@ var: String;
   interval;
   
     ngOnInit(): void {
-      this.interval = setInterval(() => {
-        if(this.timeLeft > 0) {
-          this.stan=null;       
-        } else {
-          this.timeLeft = 5;
-        }
-      },1000)
-
-
      this.allHouses$ = this.httpService.getHouses()
     }
 

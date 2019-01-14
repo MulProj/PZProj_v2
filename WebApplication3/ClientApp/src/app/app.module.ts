@@ -14,11 +14,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AllHousesComponent } from './all-houses/all-houses.component';
 import { AddHouseComponent } from './add-house/add-house.component';
 import { SensorsComponent } from './sensors/sensors.component';
-import { FindUsComponent } from './find-us/find-us.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './Service/http.service';
 import {FormsModule} from '@angular/forms';
-import { CanvasComponent } from './canvas/canvas.component';
 import { UploadComponent } from './upload/upload.component';
 import { SafePipe } from './safe.pipe';
 import { AddSensorsComponent } from './all-houses/add-sensors/add-sensors.component';
@@ -39,8 +37,6 @@ import { ViewSensorsComponent } from './all-houses/view-sensors/view-sensors.com
     AllHousesComponent,
     AddHouseComponent,
     SensorsComponent,
-    FindUsComponent,
-    CanvasComponent,
     UploadComponent,
     SafePipe,
     AddSensorsComponent,
