@@ -1,3 +1,11 @@
+<div *ngIf="stan ==null"></div>
+<div *ngIf="stan ==1" class="alert alert-success" role="alert">
+  Pomyślnie dodano dom
+</div>
+<div *ngIf="stan ==2" class="alert alert-danger" role="alert">
+  Dom nie został dodany. Spróbuj ponownie
+</div>
+
 <form role="form">
   <br style="clear:both">
       <h3 style="margin-bottom: 25px; text-align: center;">Dodaj mieszkanie</h3>
@@ -15,8 +23,8 @@
   <br/>
 
 
-  <button type="button" class="btn btn-primary" (click)="addHouse()">Dodaj dom</button> 
+  <button type="button" class="btn btn-primary" (click)="addHouse()" >Dodaj dom</button> 
 
 </form>
-<app-sensors-layout></app-sensors-layout>
+
 

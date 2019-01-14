@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { House} from '../app.component';
 import { HttpService } from '../Service/http.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import {NgForm} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +13,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AddHouseComponent implements OnInit {
 
-  street: string;
+
+  
+  street: string ='';
   houseNumber: number;
   postCode: string;
   town: string;
@@ -23,7 +27,8 @@ export class AddHouseComponent implements OnInit {
   message: string;
   filestring: string;
   filestring2;
-  xd: number;
+  stan: number = null;
+
   
 
   constructor
@@ -31,8 +36,10 @@ export class AddHouseComponent implements OnInit {
     private domSanitizer: DomSanitizer
 
     ) {}
-  addHouse()
+  addHouse(ev)
   {
+console.log(this.street);
+    console.log(ev);
     const h: House=({
       street: this.street,
       houseNumber: this.houseNumber,
@@ -41,9 +48,16 @@ export class AddHouseComponent implements OnInit {
       description: this.description,
       image: this.filestring 
     });
-  this.httpService.addHouse(h).subscribe(house=>{
-     console.log(house);
-    })   
+  this.httpService.addHouse(h).subscribe(
+    success=>{
+      console.log("success");
+      this.stan=1;
+      },
+    error=>{
+      console.log("W pizdu");
+      this.stan=2;
+    }
+    )   
   }
   ngOnInit(): void {
      

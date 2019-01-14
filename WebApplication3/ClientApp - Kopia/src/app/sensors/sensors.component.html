@@ -1,0 +1,25 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">wartosc</th>
+        <th scope="col">on</th>
+        <th scope="col">house</th>
+        <th scope="col">Id domu</th>
+        <th scope="col">Operacja</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of allSensors$ | async">
+        <td>{{p.sensorId}}</td>
+        <td>{{p.temperature}} {{p.humidity}} {{p.smoke}} {{p.isMove}} </td>
+        <td>{{p.isOn}}</td>
+        <td>{{p.houseId}}</td>
+        <td>
+            <button type="button" class="btn btn-primary">Edytuj</button>
+            <button type="button" class="btn btn-primary">Usuń</button>
+        
+        </td>
+      </tr>
+    </tbody>
+  </table>

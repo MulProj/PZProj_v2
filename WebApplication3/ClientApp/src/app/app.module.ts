@@ -45,7 +45,8 @@ import { ViewSensorsComponent } from './all-houses/view-sensors/view-sensors.com
     SafePipe,
     AddSensorsComponent,
     SensorsLayoutComponent,
-    ViewSensorsComponent
+    ViewSensorsComponent,
+    
   ],
   imports: [
     BrowserModule,

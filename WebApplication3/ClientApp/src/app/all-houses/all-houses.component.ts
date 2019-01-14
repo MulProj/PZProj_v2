@@ -1,4 +1,4 @@
-import { Component, OnInit, Sanitizer, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpService } from '../Service/http.service';
 import { Observable } from 'rxjs';
 import { House } from '../app.component';
@@ -14,6 +14,7 @@ selectedHouse: number;
 lastOperationHouse: number = null;
 lastOperationNumber:number=null;
 operacja: number;
+stan:number= null;
 
 var: String;
   constructor(private httpService: HttpService, private domSanitizer: DomSanitizer) { }
@@ -23,20 +24,14 @@ var: String;
   interval;
   
     ngOnInit(): void {
-/*      this.interval = setInterval(() => {
+      this.interval = setInterval(() => {
         if(this.timeLeft > 0) {
-          this.allHouses$ = this.httpService.getHouses();        
+          this.stan=null;       
         } else {
-          this.timeLeft = 3600;
-        }
-
-        if(this.timeLeft > 0) {
-          this.allHouses2$ = this.httpService.getHouses();        
-        } else {
-          this.timeLeft = 60;
+          this.timeLeft = 5;
         }
       },1000)
-*/
+
 
      this.allHouses$ = this.httpService.getHouses()
     }
@@ -134,23 +129,15 @@ var: String;
     }
     delHouse(houseId)
     {
-      this.httpService.delHouse(houseId).subscribe(sensor=>{
-        console.log(sensor);
-      })
+      this.httpService.delHouse(houseId).subscribe(
+        success=>{
+
+          this.allHouses$ = this.httpService.getHouses()
+        },
+        error=>{console.log(error)}
+      );
+      
     }
 
-    max(a: number, b:number)
-    {
-      if(a>b)
-        return a;
-      else
-        return b;
-    }
    
   }
-
-
-
-  
-
-

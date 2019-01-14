@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3"> 
+                      <h3>Czujniki temperatury</h3>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                            <div class="huge">13</div>
+                            <div>Twoje czujniki</div>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="panel-footer">
+
+                        <form role="form">
+                                <br style="clear:both">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" name="name" placeholder="Liczba czujników temperatury" (input)="l_tempSensor($event)" required>
+                                  </div> 
+                                <br/>
+                                <button type="button" class="btn btn-primary" (click)="addTempSensor()">Dodaj czujniki</button> 
+                        </form>
+                </div>
+            
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                     <h3>Czujniki ruchu</h3>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">13</div>
+                         <div>Twoje czujniki</div>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="panel-footer">
+                        <form role="form">
+                                <br style="clear:both">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" name="name" placeholder="Liczba czujników ruchu" (input)="l_motionSensor($event)" required>
+                                  </div> 
+                                <br/>
+                                <button type="button" class="btn btn-success" (click)="addMotionSensor()">Dodaj czujniki</button> 
+                        </form>
+                </div>
+            
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <h3>Czujniki dymu</h3>
+                        
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">13</div>
+                        <div>Twoje czujniki</div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="panel-footer">
+                    <form role="form">
+                            <br style="clear:both">
+                              <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Liczba czujników dymu" (input)="l_smokeSensor($event)" required>
+                              </div> 
+                            <br/>
+                            <button type="button" class="btn btn-warning" (click)="addSmokeSensor()">Dodaj czujniki</button> 
+                    </form>
+            </div>   
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <h3>Czujniki wilgotności</h3>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                            <div class="huge">13</div>
+                            <div>Twoje czujniki</div>
+                    </div>
+                </div>
+            </div>
+         
+                <div class="panel-footer">
+                        <form role="form">
+                                <br style="clear:both">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" name="name" placeholder="Liczba czujników wilgotności" (input)="l_humiditySensor($event)" required>
+                                  </div> 
+                                <br/>
+                                <button type="button" class="btn btn-danger" (click)="addHumiditySensor()">Dodaj czujniki</button> 
+                        </form>
+                </div>
+            
+        </div>
+    </div>
+  </div>
