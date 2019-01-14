@@ -18,6 +18,9 @@ export class CanvasComponent implements OnInit {
   dragHoldX;
   dragHoldY;
   index:number;
+  context: CanvasRenderingContext2D;
+  drag=false;
+  
 
   @ViewChild('temperature') temperatureSensor: ElementRef; 
   @ViewChild('humidity') humiditySensor: ElementRef; 
@@ -25,19 +28,53 @@ export class CanvasComponent implements OnInit {
   @ViewChild('move') moveSensor: ElementRef; 
   @ViewChild('canvas') canvas: ElementRef;
 
-  public ctx: CanvasRenderingContext2D;
-  
-  constructor() { }
+
+ctx  
+  constructor() {
+
+   }
 
   ngOnInit() {
+    this.canvas.nativeElement.addEventListener("mousemove", this.mouseUp, false); 
+
+
+  } 
+  mouseDown(event: MouseEvent){   
+   
+    console.log(this.canvas);
+   // console.log(this.canvas.getBoundingClientRect());
+   // this.mouseX=event.x - this.canvas.getBoundingClientRect().left;
+  //  this.mouseY=event.y - this.canvas.getBoundingClientRect().top; 	
+  //  console.log(this.mouseX+" "+this.mouseY);
+    
+    for(var i =0; i<this.sensors.length; i++)
+    {
+
+    }
+    if (this.drag) 
+    {
+      window.addEventListener("mousemove", this.mouseMove, false);
+    }
+
   }
+  mouseUp(){
+  console.log(this.canvas);
+  }
+  mouseMove(){
+
+  }
+
+
 
   ngAfterViewInit(): void {
     this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext('2d');
   }
+   
+  
 
   createSensors()
   {
+    console.log(this.canvas);
   for(var i = 0; i<8; i++ )
       {
         this.sensors.push(new Sensor2(i*30,10,"t"));
@@ -85,7 +122,7 @@ export class CanvasComponent implements OnInit {
         {
           if(this.sensors[i].y<=this.mouseY && this.sensors[i].y+35>=this.mouseY)
           {
-           
+            this.drag=true;
             this.index=i;
             this.sensors[i].drag=true;
             
@@ -95,31 +132,7 @@ export class CanvasComponent implements OnInit {
         }
       }
     }
-    mouse(event)
-    {
-    console.log(event);
-     this.mouseX=event.clientX - this.canvas.nativeElement.getBoundingClientRect().x;
-     this.mouseY=event.clientY - this.canvas.nativeElement.getBoundingClientRect().y;
-     this.inSensors();
-     for(var i=0; i<this.sensors.length; i++)
-     {
-       if(this.sensors[i].drag=true)
-       {
-         if(this.sensors[this.index].x-(this.mouseX-15) >5 || (this.mouseX-15)-this.sensors[this.index].x>5 )
-         {
-            if(this.sensors[this.index].y-(this.mouseY-15) >5 || (this.mouseY-15)-this.sensors[this.index].y>5 )
-            {
-              this.sensors[this.index].x=this.mouseX-15;
-              this.sensors[this.index].y=this.mouseY-15;
-              this.ctx.clearRect(0, 0, 800, 600);
-              this.sensors[i].drag=false;
-              this.drawSensors(); 
-            }
-         }
-
-       }
-     }
-    }
+  
 
 }
 class Sensor2{

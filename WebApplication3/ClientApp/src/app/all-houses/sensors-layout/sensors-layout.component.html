@@ -1,3 +1,4 @@
+<!--
 <div class="panel panel-default " >
     <div class="panel-heading">
         <i class="fa fa-fw"></i> Plan domu 
@@ -5,7 +6,7 @@
 
     <div class="panel-body text-center">
         <div id="morris-area-chart">
-            <canvas #canvas (click)="mouse($event)" width="800" height="660" 
+            <canvas #canvas (click)="mouse($event)" (onmousemove)="drag($event)" (onmousedown)="mousedown()" (onmouseup)="mouseup()" width="800" height="660" 
             [ngStyle]="{'background-image': 'url(' + plan + ')',
             'background-repeat': 'no-repeat',
             'background-size': '800px 600px',
@@ -16,3 +17,17 @@
     </div>
 
 </div>
+-->
+
+
+            <canvas #canvas width="800" height="660" 
+            [ngStyle]="{'background-image': 'url(' + plan + ')',
+            'border-style': 'solid',
+            'background-repeat': 'no-repeat',
+            'background-size': '800px 600px',
+            'background-position': 'bottom'}">
+            </canvas>  
+            <button type="button" class="btn btn-danger" (click)="saveSensors()">Zapisz</button> 
+
+
+
